@@ -1,0 +1,60 @@
+.why-we {
+  padding-top: 150px;
+  padding-bottom: 150px;
+
+  @include media-mobile {
+    padding-top: 70px;
+    padding-bottom: 70px;
+  }
+
+  &__title {
+    margin-bottom: 50px;
+
+    @include media-mobile {
+      margin-bottom: 30px;
+    }
+  }
+
+  &__inner {
+    display: flex;
+    gap: 45px;
+  }
+
+  &__poster {
+    max-width: 487px;
+    width: 100%;
+    max-height: 378px;
+    overflow: hidden;
+
+    @include media-mobile {
+      display: none;
+    }
+  }
+
+  &__list {
+    display: flex;
+    flex-wrap: wrap;
+    max-width: 906px;
+    gap: 50px;
+
+    @include media-mobile {
+      gap: 20px;
+    }
+
+    & li {
+      max-width: 420px;
+      width: 100%;
+    }
+
+    h3 {
+      margin-bottom: 20px;
+      line-height: 1;
+      font-size: var(--px25);
+      color: var(--primary-blue);
+
+      @include media-mobile {
+        margin-bottom: 10px;
+      }
+    }
+  }
+}

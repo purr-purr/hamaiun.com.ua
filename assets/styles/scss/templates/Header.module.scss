@@ -1,0 +1,258 @@
+.header {
+  background-color: var(--light-gray-bg);
+
+  &__inner {
+    padding-top: 30px;
+    padding-bottom: 28px;
+    position: relative;
+
+    @include media-mobile {
+      height: 80px;
+      padding-top: 0;
+      padding-bottom: 0;
+    }
+  }
+
+  &__nav-wrapp {
+    @include media-mobile {
+      display: none;
+      flex-direction: column;
+      position: absolute;
+      top: 80px;
+      left: -15px;
+      z-index: 99999;
+      background: var(--light-gray-bg);
+      width: calc(100% + 30px);
+      height: calc(100vh + 100px);
+    }
+
+    &.active {
+      @include media-mobile {
+        display: flex;
+      }
+    }
+  }
+
+  &__top-line {
+    @include flex-align(center);
+    margin-left: auto;
+
+    @include media-mobile {
+      order: 1;
+      margin-left: 0;
+    }
+  }
+
+  &__logo {
+    position: absolute;
+    left: 0;
+    top: 30px;
+    display: block;
+    width: 163px;
+    min-width: 163px;
+    height: 41px;
+
+    @include media-mobile {
+      top: 20px;
+    }
+  }
+}
+
+.short-contacts {
+  @include flex-align(center);
+  margin-left: auto;
+  height: 49px;
+
+  @include media-mobile {
+    margin: 0 auto;
+    flex-direction: column;
+    align-items: baseline;
+    height: auto;
+  }
+
+  & li,
+  & a {
+    @include flex-align(center);
+    cursor: pointer;
+  }
+
+  & li {
+    @include media-mobile {
+      margin-bottom: 15px;
+    }
+
+    &:not(:last-child) {
+      margin-right: 30px;
+    }
+
+    .for-impaired p {
+      font-size: var(--px14);
+      min-width: 95px;
+      width: fit-content;
+    }
+
+    .sub-desc {
+      font-size: var(--px12);
+      color: var(--gray-color);
+      margin-top: 3px;
+    }
+
+    &:hover .hover-item {
+      color: var(--primary-blue);
+      transition: color .3s ease-in-out;
+    }
+  }
+
+  &__icon {
+    width: 24px;
+    height: 24px;
+    margin-right: 15px;
+  }
+}
+
+
+.nav-menu {
+  display: flex;
+  width: fit-content;
+  margin-top: 35px;
+
+  @include media-mobile {
+    flex-direction: column;
+    margin-bottom: 20px;
+    align-self: center;
+  }
+
+  &__item {
+    @include flex-align(center);
+    height: 20px;
+    position: relative;
+    cursor: pointer;
+
+    @include media-mobile {
+      flex-direction: column;
+      height: auto;
+      margin: 0 auto 20px;
+      padding-right: 0;
+    }
+
+    &:not(:last-child) {
+      padding-right: 50px;
+
+      @include media-mobile {
+        padding-right: 0;
+      }
+    }
+  }
+
+  &__link {
+    color: var(--primary-text);
+    font-size: var(--px16);
+    white-space: nowrap;
+    text-transform: uppercase;
+    font-weight: bold;
+    line-height: 1;
+    position: relative;
+
+    &:after {
+      content: '';
+      position: absolute;
+      left: 0;
+      bottom: -2px;
+      background-color: var(--primary-blue);
+      width: 0;
+      height: 1px;
+      transition: width .3s ease-in-out;
+    }
+
+    &:hover:after {
+      width: 100%;
+      transition: width .3s ease-in-out;
+    }
+  }
+}
+
+.drop-down {
+  display: none;
+  position: absolute;
+  top: 20px;
+  left: -60px;
+  z-index: 3;
+  width: 223px;
+  background: var(--light-gray-bg);
+  transition: all .4s linear;
+
+  @include media-mobile {
+    position: relative;
+    top: unset;
+    left: unset;
+  }
+
+  &__item {
+    @include flex-justify-align(center, center);
+    height: 46px;
+
+    @include media-mobile {
+      height: fit-content;
+      margin: 15px 0;
+    }
+  }
+
+  &__link {
+    font-size: var(--px16);
+    text-align: center;
+    padding: 3px 6px;
+    position: relative;
+    transition: all .3s ease-in-out;
+
+    &:after {
+      content: '';
+      position: absolute;
+      top: 3px;
+      right: -18px;
+      width: 20px;
+      height: 20px;
+      background: url("../../../assets/images/system/icon/read-more-arrow.svg") no-repeat center;
+      background-size: 100%;
+      opacity: 0;
+      transition: all .3s ease-in-out;
+    }
+
+    &:hover {
+      color: var(--primary-blue);
+      transition: all .3s ease-in-out;
+
+      &:after {
+        opacity: 1;
+      }
+    }
+  }
+}
+
+.nav-menu__item.active .drop-down {
+  display: block;
+}
+
+.mob-menu-btn {
+  display: none;
+  position: absolute;
+  top: calc((100% - 32px) / 2);
+  right: 0;
+  cursor: pointer;
+  width: 40px;
+  height: 32px;
+  background: url('../../../assets/images/system/icon/humburger-open.svg') no-repeat center center;
+  background-size: 30px 17px;
+
+  &--opened {
+    background: url('../../../assets/images/system/icon/humburger-close.svg') no-repeat center center;
+    background-size: 19px 19px;
+  }
+
+  @include media-mobile {
+    display: block;
+  }
+}
+
+.no-scroll {
+  overflow: hidden;
+}

@@ -1,0 +1,13 @@
+@import 'vars.scss';
+@import 'mixins.scss';
+@import 'common.scss';
+// modules
+@import 'templates/Header.module.scss';
+@import 'templates/Footer.module.scss';
+@import 'pages/News.module.scss';
+@import 'pages/404.module.scss';
+@import 'templates/ContactBlock.module.scss';
+@import 'templates/AboutUs.module.scss';
+@import 'templates/WhyWe.module.scss';
+@import 'templates/Preloader.module.scss';
+@import 'templates/ImpairedMode.module';
