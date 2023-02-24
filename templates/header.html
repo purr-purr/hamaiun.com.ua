@@ -5,52 +5,50 @@
 		</a>
 		
 		<div class="header__nav-wrapp">
-			<div class="header__top-line">
-				<ul class="short-contacts">
-					<li>
-						<label id="impaired-mode-btn">
-							<input id="impaired-mode-btn__item" name="show-impaired-form"
-							       type="checkbox">
-							
-							<div class="short-contacts__icon">
-								<img alt="icon" src="assets/images/system/icon/eye-icon.svg">
-							</div>
-							
-							<div class="for-impaired">
-								<p class="hover-item">Для людей <br> з вадами зору</p>
-							</div>
-						</label>
-					</li>
-					
-					<li>
-						<a href="tel:380931755035">
-							<div class="short-contacts__icon">
-								<img alt="icon" src="assets/images/system/icon/phone-icon.svg">
-							</div>
-							
-							<div>
-								<p class="hover-item">+380(93)175-50-35</p>
-								<p class="sub-desc">Пн-Пт 9:00–18:00</p>
-							</div>
-						</a>
-					</li>
-					
-					<li>
-						<a
-							href="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2540.8429454759485!2d30.448945915731095!3d50.44402597947443!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x40d4cc2099852e89%3A0x1c866dd17d7066a0!2z0LLRg9C70LjRhtGPINCf0L7Qu9GM0L7QstCwLCAyNCwg0JrQuNGX0LIsIDAyMDAw!5e0!3m2!1suk!2sua!4v1662707057148!5m2!1suk!2sua"
-							target="_blank">
-							<div class="short-contacts__icon">
-								<img alt="icon" src="assets/images/system/icon/map-icon.svg">
-							</div>
-							
-							<div>
-								<p class="hover-item">Київ</p>
-								<p class="sub-desc">вул. Дружківська, буд. 10</p>
-							</div>
-						</a>
-					</li>
-				</ul>
-			</div>
+			<ul class="short-contacts">
+				<li>
+					<label id="impaired-mode-btn">
+						<input id="impaired-mode-btn__item" name="show-impaired-form"
+						       type="checkbox">
+						
+						<div class="short-contacts__icon">
+							<img alt="icon" src="assets/images/system/icon/eye-icon.svg">
+						</div>
+						
+						<div class="for-impaired">
+							<p class="hover-item">Для людей <br> з вадами зору</p>
+						</div>
+					</label>
+				</li>
+				
+				<li>
+					<a href="tel:380931755035">
+						<div class="short-contacts__icon">
+							<img alt="icon" src="assets/images/system/icon/phone-icon.svg">
+						</div>
+						
+						<div>
+							<p class="hover-item">+380(93)175-50-35</p>
+							<p class="sub-desc">Пн-Пт 9:00–18:00</p>
+						</div>
+					</a>
+				</li>
+				
+				<li>
+					<a
+						href="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2540.8429454759485!2d30.448945915731095!3d50.44402597947443!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x40d4cc2099852e89%3A0x1c866dd17d7066a0!2z0LLRg9C70LjRhtGPINCf0L7Qu9GM0L7QstCwLCAyNCwg0JrQuNGX0LIsIDAyMDAw!5e0!3m2!1suk!2sua!4v1662707057148!5m2!1suk!2sua"
+						target="_blank">
+						<div class="short-contacts__icon">
+							<img alt="icon" src="assets/images/system/icon/map-icon.svg">
+						</div>
+						
+						<div>
+							<p class="hover-item">Київ</p>
+							<p class="sub-desc">вул. Дружківська, буд. 10</p>
+						</div>
+					</a>
+				</li>
+			</ul>
 			
 			<ul class="nav-menu">
 				<li class="nav-menu__item">
@@ -58,15 +56,17 @@
 				</li>
 				
 				<li class="nav-menu__item">
-					<a class="nav-menu__link" href="#">ПРО КОМПАНІЮ</a>
+					<a class="nav-menu__link" href="about-company.html">ПРО КОМПАНІЮ</a>
 				</li>
 				
 				<li class="nav-menu__item">
-					<a class="nav-menu__link" href="#">ФІНАНСОВИЙ ЗВІТ</a>
+					<a class="nav-menu__link"
+					   href="financial-report.html">ФІНАНСОВИЙ
+						ЗВІТ</a>
 				</li>
 				
 				<li class="nav-menu__item">
-					<a class="nav-menu__link" href="#">КЛІЄНТАМ</a>
+					<a class="nav-menu__link" href="to-clients.html">КЛІЄНТАМ</a>
 				</li>
 				
 				<li class="nav-menu__item">
@@ -75,7 +75,7 @@
 			</ul>
 		</div>
 		
-		<div class="mob-menu-btn"></div>
+		<button class="mob-menu-btn"></button>
 	</nav>
 </div>
 
@@ -91,7 +91,7 @@
 	});
 	
 	$(document).mouseup(function (e) {
-		var div = $(".nav-menu__item.active");
+		let div = $(".nav-menu__item.active");
 		if (!div.is(e.target)
 			&& div.has(e.target).length === 0) {
 			div.removeClass("active");

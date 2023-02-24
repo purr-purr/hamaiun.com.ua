@@ -145,40 +145,31 @@ details > summary {
 
 .accordion-list {
   max-width: 1260px;
-  width: 100%;
-  border-top: 1px solid var(--border-color);
-
-  &__item {
-    width: 100%;
-  }
-
-  &__details {
-    height: 100%;
-    width: 100%;
-  }
+  border-top: 1px solid var(--second-border-color);
 
   &__summary {
-    width: 100%;
-    border-bottom: 1px solid var(--border-color);
-    padding: 0 90px 0 30px;
+    border-bottom: 1px solid var(--second-border-color);
+    padding-left: 20px;
+    padding-right: 90px;
     cursor: pointer;
     position: relative;
 
     @include media-mobile {
-      padding: 0 60px 0 15px;
+      padding-left: 15px;
+      padding-right: 60px;
     }
 
     &:after {
       content: '';
       position: absolute;
-      top: calc((100% - 24px) / 2);
+      top: calc((100% - 28px) / 2);
       right: 50px;
-      width: 24px;
-      height: 24px;
-      background: url('../../../assets/images/system/icon/read-more-arrow.svg') no-repeat center;
+      width: 28px;
+      height: 28px;
+      background: url('../../../assets/images/system/icon/plus.svg') no-repeat center;
       background-size: 100%;
       transform: rotate(90deg);
-      transition: all .3s ease-in-out;
+      transition: transform .3s ease-in-out;
 
       @include media-mobile {
         right: 15px;
@@ -187,78 +178,92 @@ details > summary {
 
     h3 {
       @include flex-align(center);
-      font-family: 'Roboto', sans-serif;
-      height: 100%;
-      width: 100%;
-      font-weight: bold;
-      font-size: var(--px25);
-      padding: 25px 0;
-      transition: all 0.4s ease-in-out;
+      font-size: var(--px16);
+      padding-top: 30px;
+      padding-bottom: 30px;
+      transition: color 0.4s ease-in-out;
 
       @include media-mobile {
-        padding: 20px 0;
+        display: block;
+        padding-top: 20px;
+        padding-bottom: 20px;
       }
+    }
+
+    h3.document-title {
+      font-size: var(--px20);
+      padding-top: 20px;
+      padding-bottom: 20px;
     }
 
     &:hover h3 {
       color: var(--primary-blue);
-      transition: all 0.4s ease-in-out;
+      transition: color 0.4s ease-in-out;
     }
   }
 
   &__content {
     max-width: 1080px;
-    width: 100%;
-
-    & p {
-      line-height: 1.2;
-    }
-  }
-
-  &__img {
-    max-width: 900px;
-    width: 100%;
-    max-height: 500px;
-    margin-bottom: 30px;
   }
 
   &__date {
     @include flex-align(center);
-    font-weight: normal;
     font-size: var(--px16);
+    line-height: 1.2;
     margin-right: 30px;
     min-width: 135px;
     white-space: nowrap;
+    padding-left: 30px;
+    position: relative;
 
     @include media-mobile {
       margin-right: 0;
+      margin-bottom: 20px;
+      line-height: 1.5;
     }
 
-    & > span {
-      display: block;
+    &:before {
+      content: '';
+      position: absolute;
+      left: 0;
+      top: calc((100% - 20px) / 2);
+      height: 100%;
       width: 20px;
-      min-width: 20px;
-      height: 20px;
-      margin-right: 10px;
-      margin-bottom: 5px;
-    }
-  }
-
-  &__details[open] &__summary {
-    margin-bottom: 30px;
-
-    &:after {
-      transform: rotate(-90deg);
-      filter: grayscale(80%);
-      transition: all .3s ease-in-out;
+      background: url("../../images/system/icon/calendar-icon.svg") no-repeat center;
     }
   }
 
   &__details[open] {
-    border-bottom: 1px solid var(--border-color);
+    border-bottom: 1px solid var(--second-border-color);
     padding-bottom: 30px;
   }
+
+  &__details[open] &__summary {
+    margin-bottom: 30px;
+    background-color: var(--dark-blue-bg);
+    color: var(--white-color);
+
+    @include media-mobile {
+      padding-left: 15px;
+    }
+
+    &:after {
+      transform: rotate(45deg);
+      background-image: url('../../../assets/images/system/icon/plus--white.svg');
+      filter: grayscale(80%);
+      transition: all .3s ease-in-out;
+    }
+
+    &:hover h3 {
+      color: var(--white-color);
+    }
+  }
+
+  &__details[open] &__date:before {
+    background-image: url('../../../assets/images/system/icon/calendar-icon--white.svg');
+  }
 }
+
 
 /* ======================================
 //            Home Page
