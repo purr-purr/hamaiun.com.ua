@@ -17,4 +17,3 @@ $(function () {
 	$("#included__preloader").load("templates/preloader.html");
 	$("#included__impaired-mode").load("templates/impaired-mode.html");
 });
-

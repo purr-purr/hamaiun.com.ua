@@ -1,121 +1,120 @@
-$(document).ready(function () {
-	const body = $('#body');
+(function () {
+	const bodyElement = document.getElementById('body').classList;
+	const impairedContainer = document.getElementById('impaired-mode');
+	const impairedOpenBtnInner = document.getElementById('impaired-mode-btn__item');
+	const impairedOpenBtn = document.getElementById('impaired-mode-btn');
+	const impairedResetBtn = document.querySelector('.impaired-mode__reset-btn');
+	const impairedResetElements = document.querySelectorAll('#impaired-mode-btn__item, .impaired-mode__item input');
+	const impairedItemElements = document.querySelectorAll('.impaired-mode__item input');
 	
-	// Для людей с видами зрения
-	$('#impaired-mode-btn').on('click', function () {
-		if ($('#impaired-mode-btn__item').is(':checked')) {
-			$('.impaired-mode').addClass('active');
+	const openSettings = () => {
+		if (impairedOpenBtnInner.checked) {
+			impairedContainer.classList.add('active');
 		} else {
-			$('.impaired-mode').removeClass('active');
+			impairedContainer.classList.remove('active');
 		}
-	});
-	
-	// Сбросить настройки
-	$('.impaired-mode__accept-btn').on('click', function () {
-		$('.impaired-mode').removeClass('active');
-		$('#impaired-mode-btn__item, .impaired-mode__item input').prop('checked', false);
-		$('#body').removeClass();
-		$('#body').addClass("loaded");
-		localStorage.clear();
-	});
-	
-	$('.impaired-mode__item input').on('click', function () {
-		// Themes
-		if ($('#impaired-mode__input--black').is(':checked')) {
-			var checkboxBlack = document.getElementById('impaired-mode__input--black');
-			localStorage.setItem('impaired-mode__input--black', checkboxBlack.checked);
-			localStorage.removeItem('impaired-mode__input--white');
-			
-			var darkThame = "dark-theme";
-			body.addClass(darkThame);
-			localStorage.setItem("whatIsThame", darkThame);
-			
-		} else {
-			body.removeClass('dark-theme');
-		}
-		if ($('#impaired-mode__input--white').is(':checked')) {
-			var checkboxWhite = document.getElementById('impaired-mode__input--white');
-			localStorage.setItem('impaired-mode__input--white', checkboxWhite.checked);
-			localStorage.removeItem('impaired-mode__input--black');
-			
-			var whiteThame = "white-theme";
-			body.addClass(whiteThame);
-			localStorage.setItem("whatIsThame", whiteThame);
-		} else {
-			body.removeClass('white-theme');
-		}
-		
-		// Font Size
-		if ($('#impaired-mode__input--a1').is(':checked')) {
-			var checkboxA1 = document.getElementById('impaired-mode__input--a1');
-			localStorage.setItem('impaired-mode__input--a1', checkboxA1.checked);
-			localStorage.removeItem('impaired-mode__input--a2');
-			localStorage.removeItem('impaired-mode__input--a3');
-			localStorage.removeItem('whatIsFontSize');
-			body.removeClass('font-size--a2');
-			body.removeClass('font-size--a3');
-		}
-		if ($('#impaired-mode__input--a2').is(':checked')) {
-			var checkboxA2 = document.getElementById('impaired-mode__input--a2');
-			localStorage.setItem('impaired-mode__input--a2', checkboxA2.checked);
-			localStorage.removeItem('impaired-mode__input--a1');
-			localStorage.removeItem('impaired-mode__input--a3');
-			localStorage.removeItem('whatIsFontSize');
-			body.removeClass('font-size--a3');
-			
-			var fontSizeA2 = "font-size--a2";
-			body.addClass(fontSizeA2);
-			localStorage.setItem("whatIsFontSize", fontSizeA2);
-		} else {
-			body.removeClass(fontSizeA2);
-		}
-		if ($('#impaired-mode__input--a3').is(':checked')) {
-			var checkboxA3 = document.getElementById('impaired-mode__input--a3');
-			localStorage.setItem('impaired-mode__input--a3', checkboxA3.checked);
-			localStorage.removeItem('impaired-mode__input--a1');
-			localStorage.removeItem('impaired-mode__input--a2');
-			localStorage.removeItem('whatIsFontSize');
-			body.removeClass('font-size--a2');
-			
-			var fontSizeA3 = "font-size--a3";
-			body.addClass(fontSizeA3);
-			localStorage.setItem("whatIsFontSize", fontSizeA3);
-		} else {
-			body.removeClass(fontSizeA3);
-		}
-	});
-	
-	function load() {
-		if (localStorage.getItem("whatIsThame") == 'white-theme') {
-			getColorTheme = localStorage.whatIsThame;
-			body.addClass(getColorTheme);
-		}
-		if (localStorage.getItem("whatIsThame") == 'dark-theme') {
-			getColorTheme = localStorage.whatIsThame;
-			body.addClass(getColorTheme);
-		}
-		
-		if (localStorage.getItem("whatIsFontSize") == 'font-size--a2') {
-			getFontSize = localStorage.whatIsFontSize;
-			body.addClass(getFontSize);
-		}
-		if (localStorage.getItem("whatIsFontSize") == 'font-size--a3') {
-			getFontSize = localStorage.whatIsFontSize;
-			body.addClass(getFontSize);
-		}
-		
-		// themes and fonts Icon
-		var checkedBlack = JSON.parse(localStorage.getItem('impaired-mode__input--black'));
-		var checkedWhite = JSON.parse(localStorage.getItem('impaired-mode__input--white'));
-		var checkedA1 = JSON.parse(localStorage.getItem('impaired-mode__input--a1'));
-		var checkedA2 = JSON.parse(localStorage.getItem('impaired-mode__input--a2'));
-		var checkedA3 = JSON.parse(localStorage.getItem('impaired-mode__input--a3'));
-		document.getElementById("impaired-mode__input--black").checked = checkedBlack;
-		document.getElementById("impaired-mode__input--white").checked = checkedWhite;
-		document.getElementById("impaired-mode__input--a1").checked = checkedA1;
-		document.getElementById("impaired-mode__input--a2").checked = checkedA2;
-		document.getElementById("impaired-mode__input--a3").checked = checkedA3;
 	}
 	
-	load();
-});
+	const resetSettings = () => {
+		impairedContainer.classList.remove('active');
+		bodyElement.remove(...bodyElement);
+		bodyElement.add("loaded");
+		localStorage.clear();
+		impairedResetElements.forEach(function (el) {
+			el.checked = false;
+		});
+	}
+	
+	const themeHandle = (color) => {
+		const checkboxElement = document.getElementById(color);
+		
+		if (checkboxElement.checked) {
+			localStorage.setItem(color, checkboxElement.checked);
+			localStorage.removeItem(`${color === 'dark' ? 'white' : 'dark'}`);
+			bodyElement.add(color);
+			localStorage.setItem("currentTheme", color);
+		} else {
+			bodyElement.remove(color);
+		}
+	}
+	
+	const fontSizeHandle = () => {
+		let a1ElementChecked = document.getElementById('a1').checked;
+		let a2ElementChecked = document.getElementById('a2').checked;
+		let a3ElementChecked = document.getElementById('a3').checked;
+		const fontSizeA2 = "a2";
+		const fontSizeA3 = "a3";
+		
+		if (a1ElementChecked) {
+			localStorage.setItem('a1', a1ElementChecked);
+			localStorage.removeItem('a2');
+			localStorage.removeItem('a3');
+			localStorage.removeItem('currentFontSize');
+			bodyElement.remove(fontSizeA2);
+			bodyElement.remove(fontSizeA3);
+		}
+		
+		if (a2ElementChecked) {
+			localStorage.setItem('a2', a2ElementChecked);
+			localStorage.removeItem('a1');
+			localStorage.removeItem('a3');
+			localStorage.removeItem('currentFontSize');
+			localStorage.setItem("currentFontSize", fontSizeA2);
+			bodyElement.remove(fontSizeA3);
+			bodyElement.add(fontSizeA2);
+			a3ElementChecked = false;
+		} else {
+			bodyElement.remove(fontSizeA2);
+		}
+		
+		if (a3ElementChecked) {
+			localStorage.setItem('a3', a3ElementChecked);
+			localStorage.removeItem('a1');
+			localStorage.removeItem('a2');
+			localStorage.removeItem('currentFontSize');
+			localStorage.setItem("currentFontSize", fontSizeA3);
+			bodyElement.remove(fontSizeA2);
+			bodyElement.add(fontSizeA3);
+		} else {
+			bodyElement.remove(fontSizeA3);
+		}
+	}
+	
+	const saveSettings = (type) => {
+		const checkedElement = JSON.parse(localStorage.getItem(type));
+		document.getElementById(type).checked = checkedElement;
+		
+		if (type === 'a2' || type === 'a3') {
+			const getFontSize = localStorage.currentFontSize;
+			const currentFontSize = localStorage.getItem("currentFontSize");
+			currentFontSize === type && bodyElement.add(getFontSize);
+		}
+		
+		if (type === 'dark' || type === 'white') {
+			const getColorTheme = localStorage.currentTheme;
+			const currentTheme = localStorage.getItem("currentTheme");
+			currentTheme === type && bodyElement.add(getColorTheme);
+		}
+	}
+	
+	const changingSettings = () => {
+		themeHandle('dark');
+		themeHandle('white');
+		fontSizeHandle();
+	}
+	
+	impairedOpenBtn && impairedOpenBtn.addEventListener('click', openSettings);
+	impairedResetBtn && impairedResetBtn.addEventListener('click', resetSettings);
+	for (let i = 0; i < impairedItemElements.length; i++) {
+		impairedItemElements[i].addEventListener('click', changingSettings);
+	}
+	
+	saveSettings('dark');
+	saveSettings('white');
+	saveSettings('a1');
+	saveSettings('a2');
+	saveSettings('a3');
+})();
+
+
+

@@ -6,31 +6,32 @@
   }
 
   & h2 {
-    margin-bottom: 30px;
+    margin-bottom: 50px;
 
     @include media-mobile {
-      margin-bottom: 20px;
+      margin-bottom: 30px;
     }
   }
 }
 
 .tabs-header {
   display: flex;
+  flex-wrap: wrap;
+  gap: 13px;
+  margin-bottom: 50px;
 }
 
 .tab {
-  padding: 23px 10px;
+  padding: 10px 23px;
   border: 1px solid var(--primary-blue);
   cursor: pointer;
-
-  &:not(:last-child) {
-    margin-right: 13px;
-  }
+  transition: all .5s ease-in-out;
 }
 
 .tab.active {
-  background-color: black;
-  color: white;
+  background-color: var(--primary-blue);
+  color: var(--white-color);
+  transition: all .5s ease-in-out;
 }
 
 .tab-content {
@@ -39,4 +40,17 @@
 
 .tab-content.active {
   display: block;
+
+  p {
+    margin-bottom: 20px;
+  }
+
+  ul {
+    list-style-type: decimal;
+    padding-left: 20px;
+
+    @include media-mobile {
+      padding-left: 25px;
+    }
+  }
 }

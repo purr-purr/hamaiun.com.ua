@@ -5,7 +5,8 @@
   width: 100%;
   min-height: 180px;
   background-color: var(--white-color);
-  padding: 10px 0;
+  padding-top: 10px;
+  padding-bottom: 10px;
 
   &.active {
     display: flex;
@@ -21,17 +22,17 @@
     display: flex;
     flex-wrap: wrap;
     width: 100%;
-    padding: 0 80px;
+    padding-left: 80px;
+    padding-right: 80px;
 
     @include media-mobile {
-      padding: 0;
+      padding-left: 0;
+      padding-right: 0;
     }
   }
 
   &__nav {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
+    @include flex-justify-align(space-between, center);
     flex-wrap: wrap;
     max-width: 800px;
     width: 100%;
@@ -69,7 +70,7 @@
     transition: all .3s ease-in-out;
 
     &:hover {
-      border-color: var(--primary-blue);
+      border-color: #02283F;
       transition: all .3s ease-in-out;
     }
 
@@ -85,8 +86,7 @@
   }
 
   &__item input:checked ~ span {
-    border-color: var(--primary-blue);
-    box-shadow: 0px 4px 19px 16px rgba(82, 230, 30, 0.25);
+    border-color: #02283F;
   }
 
   &__item--theme-white span {
@@ -96,7 +96,7 @@
 
   &__item--theme-black span {
     background-color: #000;
-    border-color: #000;
+    border-color: #fff;
   }
 
   &__accept-btn {
@@ -113,8 +113,7 @@
 }
 
 #impaired-mode-btn {
-  display: flex;
-  align-items: center;
+  @include flex-align(center);
   cursor: pointer;
 
   &__item {
@@ -122,51 +121,42 @@
   }
 }
 
-
-.dark-theme,
-.white-theme {
-  .link-list__sub-title {
-    padding-left: 30px;
-  }
-
+.dark,
+.white {
   #included__impaired-mode {
     border-bottom: 1px solid var(--black-color);
   }
 }
 
-.dark-theme {
+.dark {
   filter: grayscale(100%);
   --primary-text: #fff;
-  --primary-green: #fff;
   --white-color: #000;
   --black-color: #fff;
   --gray-color: #fff;
-  --gray-secondary-color: #fff;
   --dark-blue-bg: #000;
   --light-gray-bg: #000;
-  --bright-green-color: #fff;
   --border-color: #fff;
   --primary-blue: #fff;
+  --summary-heading: #fff;
 }
 
-.white-theme {
+.white {
   filter: grayscale(100%);
   --primary-text: #000;
-  --primary-green: #000;
   --white-color: #fff;
   --black-color: #000;
   --gray-color: #000;
-  --gray-secondary-color: #000;
   --dark-blue-bg: #fff;
   --light-gray-bg: #fff;
-  --bright-green-color: #000;
   --border-color: #000;
-
   --second-white-color: #000;
+  --summary-heading: #000;
+  --active-heading: #000;
 }
 
-.font-size--a3,
-.font-size--a2 {
+.a3,
+.a2 {
   & .reporting-slider__icon {
     display: none;
   }

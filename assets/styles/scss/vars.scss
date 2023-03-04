@@ -1,36 +1,33 @@
-$low-mobile-bp: 375px; // un use and mixin
 $mobile-bp: 1024px;
-$tablet-bp: 1300px; // un use and mixin
+$tablet-bp: 1300px;
 
 :root {
   --white-color: #fff;
   --second-white-color: #fff;
   --gray-color: #787878;
-  --gray-secondary-color: #494949;
-  --bright-green-color: #52E61E;
   --border-color: #969696;
   --second-border-color: #ccc;
-
   --primary-blue: #02283F;
   --black-color: #000;
   --primary-text: #333;
   --light-gray-bg: #FAFAFA;
   --dark-blue-bg: #02283F;
 
+  --summary-heading: #333;
+  --active-heading: #fff;
+
   --px12: 12px;
   --px14: 14px;
   --px16: 16px;
-  --px18: 18px;
   --px20: 20px;
-  --px30: 30px;
   --px25: 25px;
+  --px30: 30px;
   --px40: 40px;
   --px45: 45px;
   --px50: 50px;
 
   @media (max-width: $mobile-bp) {
     --px16: 14px;
-    --px18: 16px;
     --px20: 14px;
     --px25: 20px;
     --px30: 25px;
@@ -40,23 +37,26 @@ $tablet-bp: 1300px; // un use and mixin
   }
 }
 
-.font-size--a2 {
+.a2 {
   --px12: 13px;
   --px14: 17px;
   --px16: 19px;
-  --px18: 21px;
+  --px20: 23px;
   --px25: 28px;
+  --px30: 33px;
   --px40: 43px;
-  --px45: 45px;
+  --px45: 48px;
+  --px50: 53px;
 }
 
-.font-size--a3 {
+.a3 {
   --px12: 14px;
   --px14: 19px;
   --px16: 21px;
-  --px18: 23px;
+  --px20: 25px;
   --px25: 30px;
-
-  --px40: 43px;
-  --px45: 45px;
+  --px30: 35px;
+  --px40: 45px;
+  --px45: 50px;
+  --px50: 55px;
 }

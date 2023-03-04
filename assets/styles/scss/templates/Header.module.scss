@@ -68,6 +68,10 @@
     cursor: pointer;
   }
 
+  a {
+    text-decoration: none;
+  }
+
   & li {
     @include media-mobile {
       margin-bottom: 15px;
@@ -143,6 +147,10 @@
     font-weight: bold;
     line-height: 1;
     position: relative;
+
+    &:hover {
+      text-decoration: none;
+    }
 
     &:after {
       content: '';
